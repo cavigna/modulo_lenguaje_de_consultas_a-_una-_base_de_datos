@@ -48,3 +48,10 @@ Modificar el *tipo de dato* de una columna:
 ```sql
  DROP TABLE tablaMartir;
  ```
+
+ **Agragar Datos a una Tabla**
+
+ ```sql
+ INSERT INTO tabla_Modificar(columna1, columna2,...)
+ VALUES (valor_columna1, valor_columna2, ...);
+ ```
