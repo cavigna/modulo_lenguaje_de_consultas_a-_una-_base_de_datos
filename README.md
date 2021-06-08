@@ -93,9 +93,63 @@ Borrar entrada en base a una condición
 ```sql
 DELETE FROM nombre_tabla WHERE condición
 ```
-*IN*
+*IN | NOT IN*
 ```sql
-SELECT * FROM tabla WHERE campo in(listado de valores)
-SELECT * FROM empleado WHERE cargo('Vendedor', 'Operario')
+SELECT * FROM tabla WHERE campo IN(listado de valores);
+
+SELECT * FROM empleado WHERE cargo IN ('Vendedor', 'Operario');
+
+SELECT * FROM tabla WHERE campo  NOT IN(valor1, valor2,....);
+
+SELECT * FROM empleado WHERE cargo NOT IN ('Vendedor', 'Operario');
 
 ```
+
+*Distinto* < >
+
+```SQL
+
+SELECT * FROM tabla WHERE campo <> valor;
+
+
+SELECT * FROM empleado WHERE cargo <> 'Jefe';
+```
+
+
+*BETWEEN*
+
+```SQL
+
+SELECT * FROM tabla WHERE campo BETWEEN valor_1 AND valor_2;
+
+
+SELECT * FROM empleado WHERE fechaIngreso BETWEEN '2012-01-12' AND '2015-05-25';
+SELECT * FROM empleado WHERE sueldo BETWEEN 1200 AND 2500;
+
+```
+
+*LIKE*
+```SQL
+SELECT * FROM tabla WHERE campo LIKE 'patrón'.
+
+ --Termina con n ==> Tyron, Gordon, Marvin, Jordan, Gordon
+SELECT * FROM empleado WHERE nombre like '%n'; 
+
+-- Empieza con J ==> Jesse, Jordan, Jonah
+SELECT * FROM empleado WHERE nombre like 'j%'; 
+
+-- Empieza con A y termina Con N ==> 'A'lderso'n', 'A'nderso'n'
+SELECT * FROM empleado WHERE apellidoP like 'a%n'; 
+
+-- Contiene ar ==> H'ar'ry, 'Ar'thur, M'ar'vin
+SELECT * FROM empleado WHERE nombre like '%ar%';
+
+-- Contiene r en la segunda posición ==> F'r'eeman, P'r'ime, D'r'apper 
+SELECT *  FROM empleado WHERE apellidoP like '_r%';
+
+-- Empieza con d y contiene más de 3 caracteres.
+-- Resultado ==> De rivia,  Dent,  Draper.
+-- Excluyó ==> R2 D2(Es menor a tres caracteres.)
+
+SELECT *  FROM empleado WHERE apellidoP like 'd___%';
+````
