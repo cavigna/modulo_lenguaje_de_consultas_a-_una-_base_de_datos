@@ -4,10 +4,9 @@
 
 En este módulo aprenderemos acerca de lenguajes de consulta de base de datos. Aquí iré detallando algunos de los logros y desafíos que alcancé durante el desarrollo de esta sección del curso.
 
-
 ## Conceptos Aprendidos
 
-### Creación de una nueva **BASE DE DATOS**:
+### Creación de una nueva **BASE DE DATOS**
 
 ```sql
 create database primeraDB character set  utf8;
@@ -58,42 +57,47 @@ create table primeraTabla(
  VALUES (valor_columna1, valor_columna2, ...);
  ```
 
-## **Uso de Comandos**
+## Uso de Cláusula
 
 Sintaxis:
 
-```bash
+```sql
 CONSULTA = COMANDO  + CLAUSULA + OPERADOR + FUNCIÓN
 ```
 
 ### SELECT
 
 ```sql
-SELECT campo from tabla
+    SELECT columna from tabla
 
-SELECT campo1, campo2 from tabla
+    SELECT columna1, columna2 from tabla
 
-SELECT * FROM tabla;
-```   
-Con algunas condiciones:
+    SELECT * FROM tabla;
+```
 
 ### WHERE
 
 ```sql
-SELECT * FROM nombre, apellido  from nombre_tabla
-WHERE campo = valor;
+    SELECT * FROM nombre, apellido  from tabla  WHERE condición;
 ```
-Condiciones *OR AND > <*
+
+Condiciones *OR, AND,  > <*
+
 ```sql
-SELECT * FROM tabla WHERE campo1 = valor AND campo2= valor;
-SELECT * FROM tabla WHERE campo1 = valor OR campo2= valor;
+SELECT * FROM tabla WHERE columna1 = valor AND columna2= valor;
+SELECT * FROM tabla WHERE columna1 = valor OR  columna2= valor;
 ```
 
 Borrar entrada en base a una condición
+
 ```sql
-DELETE FROM nombre_tabla WHERE condición
+DELETE FROM tabla WHERE condición;
+
+DELETE FROM tabla WHERE precio>1500;
 ```
+
 *IN | NOT IN*
+
 ```sql
 SELECT * FROM tabla WHERE campo IN(listado de valores);
 
@@ -105,7 +109,7 @@ SELECT * FROM empleado WHERE cargo NOT IN ('Vendedor', 'Operario');
 
 ```
 
-*Distinto* < >
+*DISTINTO* < >
 
 ```SQL
 
@@ -148,8 +152,19 @@ SELECT * FROM empleado WHERE nombre like '%ar%';
 SELECT *  FROM empleado WHERE apellidoP like '_r%';
 
 -- Empieza con d y contiene más de 3 caracteres.
--- Resultado ==> De rivia,  Dent,  Draper.
+-- Resultado ==> De Rivia,  Dent,  Draper.
 -- Excluyó ==> R2 D2(Es menor a tres caracteres.)
 
 SELECT *  FROM empleado WHERE apellidoP like 'd___%';
-````
+```
+
+### ORDER BY
+```SQL
+SELECT columna_uno, columna_dos FROM tabla ORDER BY columna_dos ASC|DESC;
+```
+
+### GROUP BY
+
+```SQL
+SELECT columna_uno, ... FROM tabla GROUP BY columna_n;
+```
