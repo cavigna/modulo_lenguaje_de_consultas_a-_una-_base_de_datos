@@ -4,7 +4,7 @@
 
 En este módulo aprenderemos acerca de lenguajes de consulta de base de datos. Aquí iré detallando algunos de los logros y desafíos que alcancé durante el desarrollo de esta sección del curso.
 
-## Conceptos Aprendidos
+## DDL | Data Definition Language
 
 ### Creación de una nueva **BASE DE DATOS**
 
@@ -50,20 +50,29 @@ create table primeraTabla(
  DROP TABLE tablaMartir;
  ```
 
-### **Agragar Datos a una Tabla**
+### TRUNCATE
+Borra todo el contenido de la tabla, pero no la tabla en sí:
+
+```SQL
+TRUNCATE TABLE tablaMartir;
+```
+
+## DML | Data Manipulation Language
+
+Sintaxis de una Sentencia:
+
+```sql
+COMANDO  + CLAUSULA + OPERADOR + FUNCIÓN
+SELECT   + FROM / WHERE + >= + AVG(*)
+ 
+```
+
+### INSERT
 
  ```sql
  INSERT INTO tabla_Modificar(columna1, columna2,...)
  VALUES (valor_columna1, valor_columna2, ...);
  ```
-
-## Uso de Cláusula
-
-Sintaxis:
-
-```sql
-CONSULTA = COMANDO  + CLAUSULA + OPERADOR + FUNCIÓN
-```
 
 ### SELECT
 
@@ -159,6 +168,7 @@ SELECT *  FROM empleado WHERE apellidoP like 'd___%';
 ```
 
 ### ORDER BY
+
 ```SQL
 SELECT columna_uno, columna_dos FROM tabla ORDER BY columna_dos ASC|DESC;
 ```
@@ -167,4 +177,36 @@ SELECT columna_uno, columna_dos FROM tabla ORDER BY columna_dos ASC|DESC;
 
 ```SQL
 SELECT columna_uno, ... FROM tabla GROUP BY columna_n;
+```
+
+### VIEWS
+
+```sql
+CREATE VIEW vista AS
+SELECT columna1, columna2, ...
+FROM tabla
+WHERE condición;
+
+CREATE VIEW datosPersonales AS 
+SELECT nombre, apellidoP, edad 
+FROM empleado
+WHERE sueldo>1500;
+```
+
+### SUB QUERY
+
+```SQL
+SELECT * FROM tabla
+WHERE condición
+(SELECT selección
+FROM tabla)
+```
+
+### INNER JOIN
+
+``` SQL
+SELECT columna(s)
+FROM tabla1
+INNER JOIN tabla2
+ON tabla1.columna = tabla2.columna;
 ```
